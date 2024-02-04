@@ -9,11 +9,17 @@ import ReactDOM from "react-dom/client";
  *  - Search
  *  - Restaurant Container
  *      - Restaurant Card
+ *      - Image
+ *      - Name of Res, Star Rating, Cuisine, Delivery Time
  * Footer
  *  - Copyright
  *  - Links
  *  - Contact
  */
+// Note : Learn What is Config Driven UI
+const styleCard = {
+  backgroundColor: "#f0f0f0",
+};
 
 const Header = () => {
   return (
@@ -36,10 +42,36 @@ const Header = () => {
   );
 };
 
+const RestaurantCard = (props) => {
+  // const { resData } = props;
+  return (
+    <div className="res-card" style={styleCard}>
+      <img
+        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/79c8cf4d80c6c5a5868330d14ed91e58"
+        alt="res-logo"
+      />
+      {/* <h3>{resData.resName}</h3>
+      <h4>{resData.cuisine}</h4> */}
+      <h3>{props.resName}</h3>
+      <h4>{props.cuisine}</h4>
+      <h4>4.4 Stars</h4>
+      <h4>38 minuts</h4>
+    </div>
+  );
+};
+
 const Body = () => (
   <div className="body">
     <div className="search">Searh</div>
-    <div className="res-container"></div>
+    <div className="res-container">
+      //resName is props which is basically is a properties or we can say it is
+      an argument.React prop is a Javascript object
+      <RestaurantCard
+        resName="Meghna Foods"
+        cuisine="Biriyani, North Indian, Asian"
+      />
+      <RestaurantCard resName="KFC" cuisine="Burger, Fast Food" />
+    </div>
   </div>
 );
 
